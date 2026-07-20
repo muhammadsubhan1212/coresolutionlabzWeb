@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CoreSolutionLabz — Corporate Website
+
+A premium, fully responsive corporate marketing site for **CoreSolutionLabz**, built with Next.js 15 (App Router), React 19, TypeScript, and Tailwind CSS 4.
+
+## Tech Stack
+
+- **Next.js 15** — App Router, Server Components, Metadata API
+- **React 19**
+- **TypeScript**
+- **Tailwind CSS 4** — CSS-first theme configuration (`src/app/globals.css`)
+- **Framer Motion** — scroll reveals, page transitions, mobile menu
+- **Lenis** — smooth scrolling
+- **Lucide React** — iconography
+- **next/font** — self-hosted Manrope (headings) and Inter (body) with `display: swap`
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Other scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build   # production build
+npm run start   # serve the production build
+npm run lint    # eslint
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  app/
+    layout.tsx          Root layout: fonts, metadata, providers, header/footer
+    page.tsx             Homepage — composes all sections
+    globals.css          Design tokens (@theme) + base styles
+    sitemap.ts / robots.ts
+    privacy-policy/      Static legal page
+    terms-of-service/    Static legal page
+  components/
+    layout/              Header, MobileMenu, Footer, PageLoader
+    providers/            SmoothScrollProvider (Lenis)
+    sections/             One component per homepage section
+    ui/                   Reusable primitives (Button, Container, SectionHeading, Reveal)
+    icons/                 Custom social icons (LinkedIn/X/GitHub — not shipped by lucide-react)
+  lib/
+    data.ts               Single source of truth for site copy/content
+    utils.ts              `cn()` classname helper
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+public/
+  assets/
+    logo/                 Brand logo + icon variants (full color, dark-bg, navy, white)
+    illustrations/        Hero + service illustrations (isometric brand artwork)
+    patterns/              Background pattern (used at 3–5% opacity)
+    brand/                 Office mockup, business card, letterhead, brand book cover
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Design System
 
-## Deploy on Vercel
+Defined in `src/app/globals.css` via Tailwind's `@theme` directive:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Token | Value | Usage |
+|---|---|---|
+| `primary` | `#0F172A` | Headings, dark surfaces |
+| `secondary` | `#2563EB` | Links, primary actions, hover states |
+| `accent` | `#0EA5A5` | Small highlights, check marks, icons |
+| `surface` | `#F8FAFC` | Section backgrounds |
+| `text` | `#111827` | Body copy |
+| `muted` | `#64748B` | Secondary copy |
+| `border` | `#E2E8F0` | Hairlines, card borders |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Container:** `max-w-[1320px]` via the `.container-app` utility
+- **Section rhythm:** `.section-padding` → 72px mobile, 120px desktop
+- **Headings:** Manrope (`font-heading`) · **Body:** Inter (`font-body`)
+
+## Content
+
+All copy, service descriptions, stats, testimonials, FAQs, and nav links live in `src/lib/data.ts`. Update that file to change site content without touching component markup. Testimonials are illustrative placeholders — swap in real client quotes once available.
+
+## Brand Assets
+
+All imagery is sourced from the approved CoreSolutionLabz brand kit (no AI-generated or placeholder graphics). Files were reorganized into a clean, descriptive folder structure under `public/assets/` for maintainability, but are otherwise unmodified from the originals.
+
+## Accessibility
+
+- Skip-to-content link
+- Visible focus rings (`:focus-visible`)
+- `aria-label` / `aria-expanded` on interactive controls
+- Mobile menu: focus is moved into the dialog on open and restored to the trigger on close; the rest of the page is marked `inert` while the drawer is open
+- Respects `prefers-reduced-motion` (disables Lenis smooth scroll and the intro loader animation)
