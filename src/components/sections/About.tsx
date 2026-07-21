@@ -4,9 +4,9 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 
 const highlights = [
-  { value: "2019", label: "Founded" },
-  { value: "50+", label: "Projects Shipped" },
+  { value: "100+", label: "Projects Delivered" },
   { value: "8+", label: "Industries" },
+  { value: "100%", label: "Senior-Led Delivery" },
 ];
 
 export function About() {

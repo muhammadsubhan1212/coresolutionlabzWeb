@@ -61,7 +61,7 @@ export const services: Service[] = [
     description:
       "Native and cross-platform mobile experiences designed for retention, built for reliability, and shipped on schedule to iOS and Android.",
     image: "/assets/illustrations/mobile-app.png",
-    points: ["iOS & Android native", "Cross-platform (React Native)", "App store readiness"],
+    points: ["iOS & Android native development", "Cross-platform mobile engineering", "App store readiness"],
   },
   {
     slug: "cloud-solutions",
@@ -70,7 +70,7 @@ export const services: Service[] = [
     description:
       "Cloud architecture, migration, and managed infrastructure that reduces cost, improves resilience, and scales cleanly with demand.",
     image: "/assets/illustrations/cloud-solutions.png",
-    points: ["AWS, Azure & GCP architecture", "Migration & modernization", "Cost & performance optimization"],
+    points: ["Cloud architecture across major providers", "Migration & modernization", "Cost & performance optimization"],
   },
   {
     slug: "business-automation",
@@ -102,7 +102,7 @@ export const services: Service[] = [
 ];
 
 export const stats = [
-  { value: "50+", label: "Projects Delivered" },
+  { value: "100+", label: "Projects Delivered" },
   { value: "8+", label: "Industries Served" },
   { value: "12+", label: "Years, Combined Team Experience" },
   { value: "24/7", label: "Support Availability" },
@@ -176,35 +176,35 @@ export const projects: Project[] = [
   {
     title: "Enterprise Web Platform",
     category: "Website Development",
-    description: "A high-performance corporate platform rebuilt for speed, clarity, and search visibility across every market the client operates in.",
+    description: "A high-performance corporate platform rebuilt for speed, clarity, and search visibility across the client's key markets.",
     image: "/assets/illustrations/website-development.png",
-    tags: ["Next.js", "Headless CMS", "SEO"],
+    tags: ["Modern Web Stack", "Headless CMS", "SEO"],
   },
   {
     title: "Operations Management Suite",
     category: "Custom Software",
-    description: "An internal platform that replaced six disconnected spreadsheets with a single source of truth for operations and reporting.",
+    description: "An internal platform that replaced several disconnected spreadsheets with a single source of truth for operations and reporting.",
     image: "/assets/illustrations/software-development.png",
     tags: ["Custom Platform", "Dashboards", "Integrations"],
   },
   {
     title: "Consumer Banking App",
     category: "Mobile App Development",
-    description: "A cross-platform banking companion app built with biometric security, offline resilience, and a five-star app store rating.",
+    description: "A cross-platform banking companion app built with biometric security, offline resilience, and consistently strong app store reviews.",
     image: "/assets/illustrations/mobile-app.png",
-    tags: ["React Native", "Fintech", "Security"],
+    tags: ["Cross-Platform Mobile", "Fintech", "Security"],
   },
   {
     title: "Cloud Infrastructure Migration",
     category: "Cloud Solutions",
-    description: "A full migration from on-premise servers to a scalable, cost-optimized cloud architecture with 99.9% uptime.",
+    description: "A full migration from on-premise servers to a scalable, cost-optimized, and highly available cloud architecture.",
     image: "/assets/illustrations/cloud-solutions.png",
-    tags: ["AWS", "DevOps", "Cost Optimization"],
+    tags: ["Cloud Architecture", "DevOps", "Cost Optimization"],
   },
   {
     title: "Warehouse Automation Pipeline",
     category: "Business Automation",
-    description: "An automated fulfillment workflow that cut manual order processing time by more than 70%.",
+    description: "An automated fulfillment workflow that significantly cut manual order processing time and reduced fulfillment errors.",
     image: "/assets/illustrations/automation.png",
     tags: ["Workflow Automation", "RPA", "Logistics"],
   },
@@ -217,26 +217,31 @@ export const projects: Project[] = [
   },
 ];
 
-export const techStack = [
+export type TechCapability = {
+  category: string;
+  description: string;
+};
+
+export const techStack: TechCapability[] = [
   {
-    category: "Frontend",
-    items: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    category: "Frontend Engineering",
+    description: "Modern, component-based frameworks for fast, accessible web and product interfaces.",
   },
   {
-    category: "Backend",
-    items: ["Node.js", "Python", "Django", "Java", ".NET", "GraphQL"],
+    category: "Backend & APIs",
+    description: "Scalable service architectures across widely-used enterprise and open-source frameworks.",
   },
   {
-    category: "Mobile",
-    items: ["React Native", "Flutter", "Swift", "Kotlin"],
+    category: "Mobile Development",
+    description: "Native and cross-platform engineering for polished iOS and Android experiences.",
   },
   {
-    category: "Cloud & DevOps",
-    items: ["AWS", "Azure", "Google Cloud", "Docker", "Kubernetes", "Terraform"],
+    category: "Cloud & Infrastructure",
+    description: "Cloud-native architecture, containerization, and infrastructure automation across major providers.",
   },
   {
-    category: "Data",
-    items: ["PostgreSQL", "MongoDB", "Redis", "Elasticsearch"],
+    category: "Data & Storage",
+    description: "Relational, NoSQL, and caching systems matched to your workload and scale.",
   },
 ];
 
@@ -277,7 +282,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Our cloud costs dropped by a third and our uptime went from a liability to a non-issue. That migration paid for itself within the quarter.",
+      "Our cloud costs dropped noticeably and our uptime went from a liability to a non-issue. That migration paid for itself faster than we expected.",
     name: "N. Farooq",
     role: "VP Engineering, Logistics Platform",
   },
