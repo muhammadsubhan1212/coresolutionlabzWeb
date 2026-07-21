@@ -17,7 +17,15 @@ export function Services() {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
-            <Reveal key={service.slug} delay={(index % 3) * 0.08}>
+            <Reveal
+              key={service.slug}
+              delay={(index % 3) * 0.08}
+              className={
+                index === services.length - 1
+                  ? "md:col-span-2 md:mx-auto md:w-full md:max-w-[calc(50%-0.75rem)] lg:col-span-1 lg:col-start-2 lg:mx-0 lg:max-w-none"
+                  : undefined
+              }
+            >
               <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-secondary/30 hover:shadow-[0_24px_48px_-24px_rgba(15,23,42,0.16)]">
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface">
                   <Image
