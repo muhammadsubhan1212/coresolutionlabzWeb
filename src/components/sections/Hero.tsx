@@ -2,14 +2,9 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { siteConfig } from "@/lib/data";
-
-const trustBadges = [
-  { icon: ShieldCheck, label: "Security-first engineering" },
-  { icon: Sparkles, label: "Senior team on every project" },
-];
+import { photos, siteConfig } from "@/lib/data";
 
 export function Hero() {
   return (
@@ -17,25 +12,33 @@ export function Hero() {
       id="home"
       className="relative flex min-h-[100dvh] items-center overflow-hidden pt-20 sm:pt-24 md:pt-28"
     >
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,_var(--color-secondary-50),_transparent_55%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_60%_at_100%_0%,_var(--color-secondary-50),_transparent_55%),radial-gradient(ellipse_50%_40%_at_0%_100%,_var(--color-accent-50),_transparent_50%)]" />
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.35]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(15,23,42,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(15,23,42,0.03) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+          maskImage: "radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent)",
+        }}
+      />
 
-      <div className="container-app grid w-full items-center gap-4 py-2 sm:gap-8 sm:py-6 lg:grid-cols-[1.05fr_1fr] lg:gap-12 lg:py-0">
-        <div className="flex flex-col gap-3 sm:gap-5 lg:gap-7">
-          <motion.div
+      <div className="container-app grid w-full items-center gap-8 py-6 sm:gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-10 lg:py-0 xl:gap-14">
+        <div className="flex flex-col gap-4 sm:gap-5 lg:gap-7">
+          <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden items-center gap-2 self-start rounded-full border border-border bg-surface px-4 py-1.5 sm:flex lg:self-start"
+            className="font-heading text-[clamp(1.65rem,4vw,2.35rem)] font-extrabold leading-none tracking-tight text-primary"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            <span className="text-[13px] font-medium text-muted">{siteConfig.tagline}</span>
-          </motion.div>
+            Core<span className="text-secondary">Solution</span>Labz
+          </motion.p>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-            className="text-balance text-[1.7rem] font-semibold leading-[1.18] tracking-tight text-primary sm:text-5xl sm:leading-[1.12] lg:text-[3.4rem] lg:leading-[1.08]"
+            className="text-balance text-[1.55rem] font-semibold leading-[1.18] tracking-tight text-primary sm:text-4xl sm:leading-[1.12] lg:text-[2.75rem] lg:leading-[1.1] xl:text-[3.15rem]"
           >
             Engineering software that businesses build their future on.
           </motion.h1>
@@ -44,10 +47,10 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-lg text-balance text-[13.5px] leading-snug text-muted sm:text-lg sm:leading-relaxed"
+            className="max-w-lg text-balance text-[14px] leading-relaxed text-muted sm:text-lg"
           >
-            CoreSolutionLabz partners with ambitious companies to design, build, and scale
-            websites, software, mobile apps, and cloud infrastructure — engineered to last.
+            We design, build, and scale websites, software, mobile apps, and cloud
+            infrastructure — engineered to last.
           </motion.p>
 
           <motion.div
@@ -65,35 +68,69 @@ export function Hero() {
             </Button>
           </motion.div>
 
-          <motion.div
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.35 }}
-            className="hidden flex-wrap items-center gap-5 pt-2 sm:flex lg:gap-6"
+            className="hidden text-[13px] font-medium tracking-wide text-muted/80 sm:block"
           >
-            {trustBadges.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-2 text-[13px] font-medium text-muted">
-                <Icon size={16} className="text-accent" strokeWidth={2} />
-                {label}
-              </div>
-            ))}
-          </motion.div>
+            {siteConfig.tagline}
+          </motion.p>
         </div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.94 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.75, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="relative mx-auto aspect-[16/9] w-full max-w-[300px] sm:max-w-[420px] lg:max-w-none"
+          initial={{ opacity: 0, scale: 0.96, y: 12 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.85, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+          className="relative mx-auto w-full max-w-[560px] lg:max-w-none"
         >
-          <Image
-            src="/assets/illustrations/hero.png"
-            alt="Isometric illustration of CoreSolutionLabz engineering stack — cloud infrastructure, dashboards, and secure systems"
-            fill
-            priority
-            sizes="(max-width: 1024px) 90vw, 45vw"
-            className="object-contain drop-shadow-[0_30px_60px_rgba(15,23,42,0.12)]"
-          />
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] shadow-[0_40px_80px_-32px_rgba(15,23,42,0.35)] sm:aspect-[16/11]">
+            <Image
+              src={photos.hero}
+              alt="CoreSolutionLabz team collaborating in a modern office"
+              fill
+              priority
+              sizes="(max-width: 1024px) 90vw, 48vw"
+              className="object-cover object-center transition-transform duration-[1.4s] ease-out hover:scale-[1.03]"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-primary/25 via-transparent to-secondary/10" />
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, x: -16, y: 16 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute -bottom-4 -left-2 z-10 hidden w-[38%] overflow-hidden rounded-2xl border-4 border-white shadow-[0_20px_40px_-16px_rgba(15,23,42,0.35)] sm:block lg:-bottom-6 lg:-left-4"
+          >
+            <div className="relative aspect-[4/5] w-full">
+              <Image
+                src={photos.heroAccentA}
+                alt="Technology workstation spanning web, data, and engineering tools"
+                fill
+                sizes="180px"
+                className="object-cover object-center"
+                priority
+              />
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 16, y: -12 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute -right-2 -top-3 z-10 hidden w-[34%] overflow-hidden rounded-2xl border-4 border-white shadow-[0_20px_40px_-16px_rgba(15,23,42,0.3)] sm:block lg:-right-3 lg:-top-5"
+          >
+            <div className="relative aspect-square w-full">
+              <Image
+                src={photos.heroAccentB}
+                alt="Responsive CoreSolutionLabz website across multiple devices"
+                fill
+                sizes="160px"
+                className="object-cover object-center"
+                priority
+              />
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

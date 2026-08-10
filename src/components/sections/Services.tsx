@@ -30,12 +30,13 @@ export function Services() {
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface">
                   <Image
                     src={service.image}
-                    alt={`${service.title} illustration`}
+                    alt={`${service.title} — CoreSolutionLabz team at work`}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-contain p-6 transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                    className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.06]"
                     loading="lazy"
                   />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/35 via-transparent to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-90" />
                 </div>
                 <div className="flex flex-1 flex-col gap-4 p-7">
                   <h3 className="text-xl font-semibold text-primary">{service.title}</h3>

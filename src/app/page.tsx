@@ -5,6 +5,7 @@ import { About } from "@/components/sections/About";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { Process } from "@/components/sections/Process";
 import { Projects } from "@/components/sections/Projects";
+import { Studio } from "@/components/sections/Studio";
 import { TechStack } from "@/components/sections/TechStack";
 import { Industries } from "@/components/sections/Industries";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -21,6 +22,7 @@ export default function Home() {
       <WhyChooseUs />
       <Process />
       <Projects />
+      <Studio />
       <TechStack />
       <Industries />
       <Testimonials />

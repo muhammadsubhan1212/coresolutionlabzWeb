@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
+import { photos } from "@/lib/data";
 
 const highlights = [
   { value: "100+", label: "Projects Delivered" },
@@ -21,15 +22,29 @@ export function About() {
       />
       <Container className="relative grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-20">
         <Reveal direction="right" className="relative order-2 lg:order-1">
-          <div className="relative aspect-[16/10] w-full">
-            <Image
-              src="/assets/illustrations/about.png"
-              alt="Isometric illustration of CoreSolutionLabz product and infrastructure stack"
-              fill
-              sizes="(max-width: 1024px) 90vw, 45vw"
-              className="object-contain"
-              loading="lazy"
-            />
+          <div className="relative">
+            <div className="relative aspect-[4/5] w-[78%] overflow-hidden rounded-[1.5rem] shadow-[0_32px_64px_-28px_rgba(15,23,42,0.28)] sm:aspect-[5/6]">
+              <Image
+                src={photos.about}
+                alt="CoreSolutionLabz professionals collaborating in the office"
+                fill
+                sizes="(max-width: 1024px) 70vw, 35vw"
+                className="object-cover object-center"
+                loading="lazy"
+              />
+            </div>
+            <div className="absolute bottom-6 right-0 w-[52%] overflow-hidden rounded-2xl border-4 border-white shadow-[0_24px_48px_-20px_rgba(15,23,42,0.3)] sm:bottom-10">
+              <div className="relative aspect-[4/3] w-full">
+                <Image
+                  src={photos.aboutAccent}
+                  alt="Team planning a software project together"
+                  fill
+                  sizes="(max-width: 1024px) 40vw, 20vw"
+                  className="object-cover object-[center_20%]"
+                  loading="lazy"
+                />
+              </div>
+            </div>
           </div>
         </Reveal>
 

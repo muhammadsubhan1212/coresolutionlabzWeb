@@ -26,6 +26,48 @@ export const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
+export const photos = {
+  hero: "/assets/photos/team-modern-office.jpeg",
+  heroAccentA: "/assets/photos/technology-service-ecosystem.jpeg",
+  heroAccentB: "/assets/photos/responsive-website-devices.jpeg",
+  about: "/assets/photos/professionals-collaborating-office.jpeg",
+  aboutAccent: "/assets/photos/team-planning-project.jpeg",
+  whyChooseUs: "/assets/photos/professionals-collaborating-meeting.jpeg",
+  contact: "/assets/photos/professionals-reviewing-project.jpeg",
+  studio: [
+    {
+      src: "/assets/photos/analyst-presenting-bi.jpeg",
+      alt: "Analyst presenting business intelligence dashboards",
+      className: "md:col-span-2 md:row-span-2",
+    },
+    {
+      src: "/assets/photos/developer-writing-software.jpeg",
+      alt: "Developer writing software at a dual-monitor workstation",
+      className: "",
+    },
+    {
+      src: "/assets/photos/analyst-data-visualization.jpeg",
+      alt: "Analyst reviewing data visualizations",
+      className: "",
+    },
+    {
+      src: "/assets/photos/professionals-reviewing-software.jpeg",
+      alt: "Professionals reviewing custom software",
+      className: "md:col-span-2",
+    },
+    {
+      src: "/assets/photos/analyst-laptop-data.jpeg",
+      alt: "Analyst working with laptop data dashboards",
+      className: "",
+    },
+    {
+      src: "/assets/photos/professional-digital-interface.jpeg",
+      alt: "Professional reviewing a digital interface",
+      className: "",
+    },
+  ],
+} as const;
+
 export type Service = {
   slug: string;
   title: string;
@@ -42,7 +84,7 @@ export const services: Service[] = [
     shortTitle: "Website",
     description:
       "Marketing sites, web platforms, and portals engineered for speed, clarity, and conversion — built on modern frameworks and maintained for the long run.",
-    image: "/assets/illustrations/website-development.png",
+    image: "/assets/photos/responsive-website-devices.jpeg",
     points: ["Responsive front-end engineering", "CMS & headless architecture", "Performance-first builds"],
   },
   {
@@ -51,7 +93,7 @@ export const services: Service[] = [
     shortTitle: "Software",
     description:
       "Bespoke applications and internal tools shaped around your workflows, not the other way around — built to scale as your operation grows.",
-    image: "/assets/illustrations/software-development.png",
+    image: "/assets/photos/developer-writing-software.jpeg",
     points: ["Product & platform engineering", "Legacy modernization", "API & systems integration"],
   },
   {
@@ -60,7 +102,7 @@ export const services: Service[] = [
     shortTitle: "Mobile",
     description:
       "Native and cross-platform mobile experiences designed for retention, built for reliability, and shipped on schedule to iOS and Android.",
-    image: "/assets/illustrations/mobile-app.png",
+    image: "/assets/photos/professional-business-mobile.jpeg",
     points: ["iOS & Android native development", "Cross-platform mobile engineering", "App store readiness"],
   },
   {
@@ -69,7 +111,7 @@ export const services: Service[] = [
     shortTitle: "Cloud",
     description:
       "Cloud architecture, migration, and managed infrastructure that reduces cost, improves resilience, and scales cleanly with demand.",
-    image: "/assets/illustrations/cloud-solutions.png",
+    image: "/assets/photos/technology-service-ecosystem.jpeg",
     points: ["Cloud architecture across major providers", "Migration & modernization", "Cost & performance optimization"],
   },
   {
@@ -78,7 +120,7 @@ export const services: Service[] = [
     shortTitle: "Automation",
     description:
       "Workflow and process automation that removes manual overhead, reduces error, and frees your team to focus on higher-value work.",
-    image: "/assets/illustrations/automation.png",
+    image: "/assets/photos/professionals-reviewing-automation.jpeg",
     points: ["Workflow automation", "RPA & integration pipelines", "Operational tooling"],
   },
   {
@@ -87,7 +129,7 @@ export const services: Service[] = [
     shortTitle: "Security",
     description:
       "Security architecture, audits, and monitoring that protect your systems and data without slowing down your engineering teams.",
-    image: "/assets/illustrations/cybersecurity.png",
+    image: "/assets/photos/professional-database-review.jpeg",
     points: ["Security audits & hardening", "Zero-trust architecture", "Compliance readiness"],
   },
   {
@@ -96,7 +138,7 @@ export const services: Service[] = [
     shortTitle: "Consulting",
     description:
       "Strategic technology guidance for teams making critical infrastructure, architecture, and digital transformation decisions.",
-    image: "/assets/illustrations/it-consulting.png",
+    image: "/assets/photos/consultants-project-discussion.jpeg",
     points: ["Technology roadmapping", "Digital transformation strategy", "Architecture review"],
   },
 ];
@@ -136,31 +178,37 @@ export const processSteps = [
     step: "01",
     title: "Discovery & Strategy",
     description: "We study your business goals, users, and constraints to define scope, priorities, and success metrics before any code is written.",
+    image: "/assets/photos/team-planning-project.jpeg",
   },
   {
     step: "02",
     title: "Architecture & Design",
     description: "System architecture, UX flows, and interface design are mapped out and validated with you before development begins.",
+    image: "/assets/photos/professionals-reviewing-project.jpeg",
   },
   {
     step: "03",
     title: "Engineering & Build",
     description: "Iterative development in short cycles, with regular demos, code review, and continuous integration throughout the build.",
+    image: "/assets/photos/developer-responsive-web.jpeg",
   },
   {
     step: "04",
     title: "Quality & Testing",
     description: "Rigorous functional, performance, and security testing to make sure what we ship holds up under real-world conditions.",
+    image: "/assets/photos/developer-mobile-testing.jpeg",
   },
   {
     step: "05",
     title: "Launch & Deployment",
     description: "Controlled, zero-drama releases with monitoring, rollback plans, and documentation handed over clean.",
+    image: "/assets/photos/analyst-presenting-bi.jpeg",
   },
   {
     step: "06",
     title: "Support & Growth",
     description: "Ongoing support, monitoring, and iteration so your platform keeps pace with your business after launch.",
+    image: "/assets/photos/professional-business-software.jpeg",
   },
 ];
 
@@ -177,42 +225,42 @@ export const projects: Project[] = [
     title: "Enterprise Web Platform",
     category: "Website Development",
     description: "A high-performance corporate platform rebuilt for speed, clarity, and search visibility across the client's key markets.",
-    image: "/assets/illustrations/website-development.png",
+    image: "/assets/photos/developer-responsive-web.jpeg",
     tags: ["Modern Web Stack", "Headless CMS", "SEO"],
   },
   {
     title: "Operations Management Suite",
     category: "Custom Software",
     description: "An internal platform that replaced several disconnected spreadsheets with a single source of truth for operations and reporting.",
-    image: "/assets/illustrations/software-development.png",
+    image: "/assets/photos/professional-business-software.jpeg",
     tags: ["Custom Platform", "Dashboards", "Integrations"],
   },
   {
     title: "Consumer Banking App",
     category: "Mobile App Development",
     description: "A cross-platform banking companion app built with biometric security, offline resilience, and consistently strong app store reviews.",
-    image: "/assets/illustrations/mobile-app.png",
+    image: "/assets/photos/developer-mobile-testing.jpeg",
     tags: ["Cross-Platform Mobile", "Fintech", "Security"],
   },
   {
     title: "Cloud Infrastructure Migration",
     category: "Cloud Solutions",
     description: "A full migration from on-premise servers to a scalable, cost-optimized, and highly available cloud architecture.",
-    image: "/assets/illustrations/cloud-solutions.png",
+    image: "/assets/photos/professional-digital-interface.jpeg",
     tags: ["Cloud Architecture", "DevOps", "Cost Optimization"],
   },
   {
     title: "Warehouse Automation Pipeline",
     category: "Business Automation",
     description: "An automated fulfillment workflow that significantly cut manual order processing time and reduced fulfillment errors.",
-    image: "/assets/illustrations/automation.png",
+    image: "/assets/photos/professionals-reviewing-automation.jpeg",
     tags: ["Workflow Automation", "RPA", "Logistics"],
   },
   {
     title: "Zero-Trust Security Overhaul",
     category: "Cybersecurity",
     description: "A ground-up security architecture redesign, from identity access to encrypted data pipelines, for a regulated services provider.",
-    image: "/assets/illustrations/cybersecurity.png",
+    image: "/assets/photos/professional-database-review.jpeg",
     tags: ["Zero Trust", "Compliance", "Monitoring"],
   },
 ];

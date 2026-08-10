@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { ContactForm } from "@/components/sections/ContactForm";
-import { siteConfig } from "@/lib/data";
+import { photos, siteConfig } from "@/lib/data";
 
 const contactDetails = [
   { icon: Mail, label: "Email", value: siteConfig.email, href: `mailto:${siteConfig.email}` },
@@ -19,7 +19,7 @@ const contactDetails = [
 
 export function Contact() {
   return (
-    <section id="contact" className="section-padding bg-white">
+    <section id="contact" className="section-padding relative overflow-hidden bg-white">
       <Container>
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <div className="flex flex-col gap-8">
@@ -29,6 +29,20 @@ export function Contact() {
               title="Let's build something that lasts"
               description="Tell us about your project and we'll respond within one business day with next steps."
             />
+
+            <Reveal delay={0.1} className="relative hidden overflow-hidden rounded-2xl sm:block">
+              <div className="relative aspect-[16/10] w-full">
+                <Image
+                  src={photos.contact}
+                  alt="CoreSolutionLabz team reviewing a project together"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 40vw"
+                  className="object-cover"
+                  loading="lazy"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent" />
+              </div>
+            </Reveal>
 
             <Reveal delay={0.15} className="flex flex-col gap-4">
               {contactDetails.map(({ icon: Icon, label, value, href }) => {
