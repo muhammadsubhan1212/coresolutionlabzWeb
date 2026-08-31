@@ -2,6 +2,7 @@
   "use strict";
 
   var STORAGE_KEY = "telecaller_guide_name";
+  var GENDER_KEY = "telecaller_guide_gender";
   var MAX_NAME_LENGTH = 50;
 
   function sanitizeName(input) {
@@ -24,6 +25,15 @@
     }
   }
 
+  function getStoredGender() {
+    try {
+      var g = localStorage.getItem(GENDER_KEY);
+      return g === "male" ? "male" : "female";
+    } catch (e) {
+      return "female";
+    }
+  }
+
   function saveName(name) {
     try {
       localStorage.setItem(STORAGE_KEY, name);
@@ -32,9 +42,23 @@
     }
   }
 
+  function saveGender(gender) {
+    try {
+      localStorage.setItem(GENDER_KEY, gender === "male" ? "male" : "female");
+    } catch (e) {
+      /* ignore */
+    }
+  }
+
   function getDisplayName() {
     var name = getStoredName();
     return name || "___";
+  }
+
+  function applyGender(text, gender) {
+    return text.replace(/\[G:([^|\]]+)\|([^\]]+)\]/g, function (_, female, male) {
+      return gender === "male" ? male : female;
+    });
   }
 
   function updateNameUI() {
@@ -55,9 +79,22 @@
     }
   }
 
+  function updateGenderUI() {
+    var gender = getStoredGender();
+    document.querySelectorAll(".gender-btn").forEach(function (btn) {
+      btn.classList.toggle("active", btn.getAttribute("data-gender") === gender);
+    });
+    document.querySelectorAll(".response-label[data-label-f]").forEach(function (el) {
+      el.textContent = gender === "male"
+        ? el.getAttribute("data-label-m")
+        : el.getAttribute("data-label-f");
+    });
+  }
+
   function applyNameToScripts() {
     var displayName = getDisplayName();
     var storedName = getStoredName();
+    var gender = getStoredGender();
 
     document.querySelectorAll("[data-script]").forEach(function (el) {
       var template = el.getAttribute("data-script");
@@ -65,10 +102,12 @@
       if (storedName && template.indexOf("[APNA NAAM]") !== -1) {
         text = text.replace(/\[APNA NAAM\]/g, storedName);
       }
+      text = applyGender(text, gender);
       el.textContent = text;
     });
 
     updateNameUI();
+    updateGenderUI();
   }
 
   function setupNameForm() {
@@ -108,6 +147,16 @@
         input.select();
       });
     }
+  }
+
+  function setupGenderSelection() {
+    document.querySelectorAll(".gender-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var gender = btn.getAttribute("data-gender");
+        saveGender(gender);
+        applyNameToScripts();
+      });
+    });
   }
 
   function getScriptText(element) {
@@ -193,43 +242,57 @@
     });
   }
 
-  function setupStickyNav() {
-    var navLinks = document.querySelectorAll(".nav-link");
-    var sections = [];
-
-    navLinks.forEach(function (link) {
-      var id = link.getAttribute("href");
-      if (id && id.startsWith("#")) {
-        var section = document.querySelector(id);
-        if (section) sections.push({ link: link, section: section });
-      }
-    });
-
+  function bindNavLinks(links, sections) {
     function navHeight() {
-      var nav = document.querySelector(".sticky-nav");
-      return nav ? nav.offsetHeight : 48;
+      var topNav = document.querySelector(".desktop-nav");
+      return topNav && window.innerWidth > 768 ? topNav.offsetHeight : 0;
     }
 
     function updateActiveLink() {
-      var scrollPos = window.scrollY + navHeight() + 20;
+      var scrollPos = window.scrollY + navHeight() + 24;
       var current = sections[0];
       sections.forEach(function (entry) {
         if (entry.section.offsetTop <= scrollPos) current = entry;
       });
-      navLinks.forEach(function (l) { l.classList.remove("active"); });
-      if (current) current.link.classList.add("active");
+      links.forEach(function (l) { l.classList.remove("active"); });
+      if (current) {
+        var activeId = "#" + current.section.id;
+        links.forEach(function (l) {
+          if (l.getAttribute("href") === activeId) l.classList.add("active");
+        });
+      }
     }
 
     window.addEventListener("scroll", updateActiveLink, { passive: true });
+    window.addEventListener("resize", updateActiveLink, { passive: true });
     updateActiveLink();
 
-    navLinks.forEach(function (link) {
+    links.forEach(function (link) {
       link.addEventListener("click", function (e) {
         e.preventDefault();
         var target = document.querySelector(link.getAttribute("href"));
-        if (target) target.scrollIntoView({ behavior: "smooth" });
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
+  }
+
+  function setupStickyNav() {
+    var allLinks = document.querySelectorAll(".desktop-nav .nav-link, .mobile-nav .mob-link");
+    var sections = [];
+    var seen = {};
+
+    allLinks.forEach(function (link) {
+      var id = link.getAttribute("href");
+      if (id && id.startsWith("#")) {
+        var section = document.querySelector(id);
+        if (section && !seen[id]) {
+          seen[id] = true;
+          sections.push({ section: section });
+        }
+      }
+    });
+
+    bindNavLinks(allLinks, sections);
   }
 
   function setupScrollButtons() {
@@ -262,6 +325,7 @@
 
   function init() {
     setupNameForm();
+    setupGenderSelection();
     applyNameToScripts();
     setupCopyButtons();
     setupAccordions();

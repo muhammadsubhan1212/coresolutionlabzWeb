@@ -9,16 +9,26 @@
 </head>
 <body>
 
-  <nav class="sticky-nav" aria-label="Guide navigation">
+  <nav class="sticky-nav desktop-nav" aria-label="Guide navigation">
+    <div class="nav-brand">Telecaller Guide</div>
     <div class="sticky-nav-inner">
+      <a href="#home" class="nav-link">Home</a>
       <a href="#start" class="nav-link">Start</a>
-      <a href="#what-to-pitch" class="nav-link">What To Pitch</a>
-      <a href="#call-scripts" class="nav-link">Call Scripts</a>
-      <a href="#customer-says" class="nav-link">Customer Says</a>
+      <a href="#what-to-pitch" class="nav-link">Pitch</a>
+      <a href="#call-scripts" class="nav-link">Scripts</a>
+      <a href="#customer-says" class="nav-link">Customer</a>
       <a href="#whatsapp" class="nav-link">WhatsApp</a>
-      <a href="#google-sheet" class="nav-link">Google Sheet</a>
+      <a href="#google-sheet" class="nav-link">Sheet</a>
       <a href="#after-call" class="nav-link">After Call</a>
     </div>
+  </nav>
+
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <a href="#home" class="mob-link"><span class="mob-icon">⌂</span><span>Home</span></a>
+    <a href="#call-scripts" class="mob-link"><span class="mob-icon">📞</span><span>Scripts</span></a>
+    <a href="#customer-says" class="mob-link"><span class="mob-icon">💬</span><span>Customer</span></a>
+    <a href="#whatsapp" class="mob-link"><span class="mob-icon">WA</span><span>WhatsApp</span></a>
+    <a href="#google-sheet" class="mob-link"><span class="mob-icon">📋</span><span>Sheet</span></a>
   </nav>
 
   <div class="container">
@@ -30,14 +40,25 @@
 
     <!-- Compact Name -->
     <div class="name-bar" id="name-bar">
-      <span class="name-label">Apna Naam</span>
-      <div id="name-edit-row" class="name-row">
-        <input type="text" id="caller-name-input" class="name-input" placeholder="Apna naam" maxlength="50" autocomplete="name">
-        <button type="button" id="save-name-btn" class="btn btn-primary btn-sm">Save</button>
-      </div>
-      <div id="name-saved-row" class="name-row name-saved" hidden>
-        <span class="name-display">Naam: <strong id="name-display"></strong></span>
-        <button type="button" id="change-name-btn" class="btn btn-outline btn-sm">Change</button>
+      <div class="name-bar-grid">
+        <div class="name-field">
+          <span class="name-label">Apna Naam</span>
+          <div id="name-edit-row" class="name-row">
+            <input type="text" id="caller-name-input" class="name-input" placeholder="Apna naam" maxlength="50" autocomplete="name">
+            <button type="button" id="save-name-btn" class="btn btn-primary btn-sm">Save</button>
+          </div>
+          <div id="name-saved-row" class="name-row name-saved" hidden>
+            <span class="name-display">Naam: <strong id="name-display"></strong></span>
+            <button type="button" id="change-name-btn" class="btn btn-outline btn-sm">Change</button>
+          </div>
+        </div>
+        <div class="gender-field">
+          <span class="name-label">Gender</span>
+          <div class="gender-toggle" role="group" aria-label="Gender select karein">
+            <button type="button" class="gender-btn active" data-gender="female">Female</button>
+            <button type="button" class="gender-btn" data-gender="male">Male</button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -113,8 +134,8 @@
         <h3>Website Nahi Hai</h3>
         <div class="script-card script-large">
           <blockquote>
-            <p data-script="Assalam o Alaikum, main [NAME] baat kar rahi hoon. Main aapke business ke hawale se call kar rahi hoon.">Assalam o Alaikum, main [NAME] baat kar rahi hoon. Main aapke business ke hawale se call kar rahi hoon.</p>
-            <p data-script="Humne aapka business online dekha tha. Main bas ye poochna chahti thi ke kya aapke business ki currently koi website hai?">Humne aapka business online dekha tha. Main bas ye poochna chahti thi ke kya aapke business ki currently koi website hai?</p>
+            <p data-script="Assalam o Alaikum, main [NAME] baat [G:kar rahi hoon|kar raha hoon]. Main aapke business ke hawale se call [G:kar rahi hoon|kar raha hoon].">Assalam o Alaikum, main [NAME] baat [G:kar rahi hoon|kar raha hoon]. Main aapke business ke hawale se call [G:kar rahi hoon|kar raha hoon].</p>
+            <p data-script="Humne aapka business online dekha tha. Main bas ye poochna [G:chahti thi|chahta tha] ke kya aapke business ki currently koi website hai?">Humne aapka business online dekha tha. Main bas ye poochna [G:chahti thi|chahta tha] ke kya aapke business ki currently koi website hai?</p>
           </blockquote>
           <p class="hint"><strong>Bas. Ab customer ko bolne do.</strong></p>
           <div class="script-actions"><button type="button" class="btn btn-copy">Copy Script</button><span class="copy-feedback">Copied!</span></div>
@@ -123,7 +144,7 @@
         <h4>Agar Customer Bole: "Nahi"</h4>
         <div class="script-card">
           <blockquote>
-            <p data-script="Acha. Actually hum businesses ko professional website aur online presence improve karne mein help karte hain. Is liye main pooch rahi thi ke kya aapne apne business ke liye website banwane ka kabhi socha hai?">Acha. Actually hum businesses ko professional website aur online presence improve karne mein help karte hain. Is liye main pooch rahi thi ke kya aapne apne business ke liye website banwane ka kabhi socha hai?</p>
+            <p data-script="Acha. Actually hum businesses ko professional website aur online presence improve karne mein help karte hain. Is liye main [G:pooch rahi thi|pooch raha tha] ke kya aapne apne business ke liye website banwane ka kabhi socha hai?">Acha. Actually hum businesses ko professional website aur online presence improve karne mein help karte hain. Is liye main [G:pooch rahi thi|pooch raha tha] ke kya aapne apne business ke liye website banwane ka kabhi socha hai?</p>
           </blockquote>
           <p class="hint">Customer ka response suno.</p>
           <div class="script-actions"><button type="button" class="btn btn-copy">Copy Script</button><span class="copy-feedback">Copied!</span></div>
@@ -150,8 +171,8 @@
         <h3>Website Weak Hai</h3>
         <div class="script-card">
           <blockquote>
-            <p data-script="Assalam o Alaikum, main [NAME] baat kar rahi hoon. Main aapke business ke hawale se call kar rahi hoon.">Assalam o Alaikum, main [NAME] baat kar rahi hoon. Main aapke business ke hawale se call kar rahi hoon.</p>
-            <p data-script="Humne aapki website dekhi. Main bas ye poochna chahti thi ke kya aap apni website ko improve ya update karwana chahte hain?">Humne aapki website dekhi. Main bas ye poochna chahti thi ke kya aap apni website ko improve ya update karwana chahte hain?</p>
+            <p data-script="Assalam o Alaikum, main [NAME] baat [G:kar rahi hoon|kar raha hoon]. Main aapke business ke hawale se call [G:kar rahi hoon|kar raha hoon].">Assalam o Alaikum, main [NAME] baat [G:kar rahi hoon|kar raha hoon]. Main aapke business ke hawale se call [G:kar rahi hoon|kar raha hoon].</p>
+            <p data-script="Humne aapki website dekhi. Main bas ye poochna [G:chahti thi|chahta tha] ke kya aap apni website ko improve ya update karwana chahte hain?">Humne aapki website dekhi. Main bas ye poochna [G:chahti thi|chahta tha] ke kya aap apni website ko improve ya update karwana chahte hain?</p>
           </blockquote>
           <div class="script-actions"><button type="button" class="btn btn-copy">Copy Script</button><span class="copy-feedback">Copied!</span></div>
         </div>
@@ -165,7 +186,7 @@
           </blockquote>
           <p class="hint">Agar interested hon:</p>
           <blockquote>
-            <p data-script="Samajh gayi. Hum businesses ko social media management mein bhi help karte hain. Agar aap chahein to main aapki basic details note kar leti hoon aur hamari team aapko proper details share kar degi.">Samajh gayi. Hum businesses ko social media management mein bhi help karte hain. Agar aap chahein to main aapki basic details note kar leti hoon aur hamari team aapko proper details share kar degi.</p>
+            <p data-script="[G:Samajh gayi|Samajh gaya]. Hum businesses ko social media management mein bhi help karte hain. Agar aap chahein to main aapki basic details [G:note kar leti hoon|note kar leta hoon] aur hamari team aapko proper details share kar degi.">[G:Samajh gayi|Samajh gaya]. Hum businesses ko social media management mein bhi help karte hain. Agar aap chahein to main aapki basic details [G:note kar leti hoon|note kar leta hoon] aur hamari team aapko proper details share kar degi.</p>
           </blockquote>
           <div class="script-actions"><button type="button" class="btn btn-copy">Copy Script</button><span class="copy-feedback">Copied!</span></div>
         </div>
@@ -187,7 +208,7 @@
           </blockquote>
           <p class="hint">Agar satisfied hain:</p>
           <blockquote>
-            <p data-script="Samajh gayi. Aapke business mein koi aisa kaam hai jo currently manually hota hai aur aapka ya aapki team ka kaafi time leta hai?">Samajh gayi. Aapke business mein koi aisa kaam hai jo currently manually hota hai aur aapka ya aapki team ka kaafi time leta hai?</p>
+            <p data-script="[G:Samajh gayi|Samajh gaya]. Aapke business mein koi aisa kaam hai jo currently manually hota hai aur aapka ya aapki team ka kaafi time leta hai?">[G:Samajh gayi|Samajh gaya]. Aapke business mein koi aisa kaam hai jo currently manually hota hai aur aapka ya aapki team ka kaafi time leta hai?</p>
           </blockquote>
           <p class="hint">Dusri website automatically sell mat karo.</p>
           <div class="script-actions"><button type="button" class="btn btn-copy">Copy Script</button><span class="copy-feedback">Copied!</span></div>
@@ -203,7 +224,7 @@
           </blockquote>
           <p class="hint">Agar customer problem bataye:</p>
           <blockquote>
-            <p data-script="Samajh gayi. Main aapki requirement note kar leti hoon aur hamari team aapko properly explain kar degi ke iske liye kya suitable option ho sakta hai.">Samajh gayi. Main aapki requirement note kar leti hoon aur hamari team aapko properly explain kar degi ke iske liye kya suitable option ho sakta hai.</p>
+            <p data-script="[G:Samajh gayi|Samajh gaya]. Main aapki requirement [G:note kar leti hoon|note kar leta hoon] aur hamari team aapko properly explain kar degi ke iske liye kya suitable option ho sakta hai.">[G:Samajh gayi|Samajh gaya]. Main aapki requirement [G:note kar leti hoon|note kar leta hoon] aur hamari team aapko properly explain kar degi ke iske liye kya suitable option ho sakta hai.</p>
           </blockquote>
           <div class="script-actions"><button type="button" class="btn btn-copy">Copy Script</button><span class="copy-feedback">Copied!</span></div>
         </div>
@@ -219,9 +240,9 @@
             <span>"Price?"</span><span class="accordion-icon">▼</span>
           </button>
           <div class="accordion-panel">
-            <p class="response-label">Tum kya bolo gi</p>
+            <p class="response-label" data-label-f="Tum kya bolo gi" data-label-m="Tum kya bolo ge">Tum kya bolo gi</p>
             <div class="script-card">
-              <blockquote data-script="Price requirement ke according depend karti hai. Main aapko koi inaccurate amount nahi dena chahti. Aap apni requirement bata dein, hamari team aapko suitable option aur pricing properly explain kar degi.">Price requirement ke according depend karti hai. Main aapko koi inaccurate amount nahi dena chahti. Aap apni requirement bata dein, hamari team aapko suitable option aur pricing properly explain kar degi.</blockquote>
+              <blockquote data-script="Price requirement ke according depend karti hai. Main aapko koi inaccurate amount nahi [G:dena chahti|dena chahta]. Aap apni requirement bata dein, hamari team aapko suitable option aur pricing properly explain kar degi.">Price requirement ke according depend karti hai. Main aapko koi inaccurate amount nahi [G:dena chahti|dena chahta]. Aap apni requirement bata dein, hamari team aapko suitable option aur pricing properly explain kar degi.</blockquote>
               <p class="hint">Approved pricing ke baghair apni taraf se price mat batana.</p>
               <div class="script-actions"><button type="button" class="btn btn-copy">Copy Script</button><span class="copy-feedback">Copied!</span></div>
             </div>
@@ -232,9 +253,9 @@
             <span>"WhatsApp Kar Dein"</span><span class="accordion-icon">▼</span>
           </button>
           <div class="accordion-panel">
-            <p class="response-label">Tum kya bolo gi</p>
+            <p class="response-label" data-label-f="Tum kya bolo gi" data-label-m="Tum kya bolo ge">Tum kya bolo gi</p>
             <div class="script-card">
-              <blockquote data-script="Bilkul. Main aapko WhatsApp par short details share kar deti hoon.">Bilkul. Main aapko WhatsApp par short details share kar deti hoon.</blockquote>
+              <blockquote data-script="Bilkul. Main aapko WhatsApp par short details share [G:kar deti hoon|kar deta hoon].">Bilkul. Main aapko WhatsApp par short details share [G:kar deti hoon|kar deta hoon].</blockquote>
               <div class="script-actions"><button type="button" class="btn btn-copy">Copy Script</button><span class="copy-feedback">Copied!</span></div>
             </div>
           </div>
@@ -244,7 +265,7 @@
             <span>"Abhi Busy Hoon"</span><span class="accordion-icon">▼</span>
           </button>
           <div class="accordion-panel">
-            <p class="response-label">Tum kya bolo gi</p>
+            <p class="response-label" data-label-f="Tum kya bolo gi" data-label-m="Tum kya bolo ge">Tum kya bolo gi</p>
             <div class="script-card">
               <blockquote data-script="Sure, koi issue nahi. Aap bata dein kis time aapko call karna convenient rahega?">Sure, koi issue nahi. Aap bata dein kis time aapko call karna convenient rahega?</blockquote>
               <div class="script-actions"><button type="button" class="btn btn-copy">Copy Script</button><span class="copy-feedback">Copied!</span></div>
@@ -256,10 +277,10 @@
             <span>"Interested Nahi Hoon"</span><span class="accordion-icon">▼</span>
           </button>
           <div class="accordion-panel">
-            <p class="response-label">Tum kya bolo gi</p>
+            <p class="response-label" data-label-f="Tum kya bolo gi" data-label-m="Tum kya bolo ge">Tum kya bolo gi</p>
             <div class="script-card">
               <blockquote>
-                <p data-script="No problem, bilkul. Main bas ye confirm karna chahti thi ke currently requirement nahi hai ya aap already kisi ke saath work kar rahe hain?">No problem, bilkul. Main bas ye confirm karna chahti thi ke currently requirement nahi hai ya aap already kisi ke saath work kar rahe hain?</p>
+                <p data-script="No problem, bilkul. Main bas ye confirm karna [G:chahti thi|chahta tha] ke currently requirement nahi hai ya aap already kisi ke saath work kar rahe hain?">No problem, bilkul. Main bas ye confirm karna [G:chahti thi|chahta tha] ke currently requirement nahi hai ya aap already kisi ke saath work kar rahe hain?</p>
                 <p data-script="No problem. Thank you for your time. Future mein zaroorat ho to aap humein contact kar sakte hain.">No problem. Thank you for your time. Future mein zaroorat ho to aap humein contact kar sakte hain.</p>
               </blockquote>
               <p class="hint">Agar phir bhi mana kare to politely close karo.</p>
@@ -272,7 +293,7 @@
             <span>"Already Kisi Ke Saath Kaam Kar Rahe Hain"</span><span class="accordion-icon">▼</span>
           </button>
           <div class="accordion-panel">
-            <p class="response-label">Tum kya bolo gi</p>
+            <p class="response-label" data-label-f="Tum kya bolo gi" data-label-m="Tum kya bolo ge">Tum kya bolo gi</p>
             <div class="script-card">
               <blockquote data-script="That's completely fine. Agar future mein aapko kisi additional service ya better solution ki requirement ho to kya hum aapko contact kar sakte hain?">That's completely fine. Agar future mein aapko kisi additional service ya better solution ki requirement ho to kya hum aapko contact kar sakte hain?</blockquote>
               <div class="script-actions"><button type="button" class="btn btn-copy">Copy Script</button><span class="copy-feedback">Copied!</span></div>
@@ -284,9 +305,9 @@
             <span>"Technical Question"</span><span class="accordion-icon">▼</span>
           </button>
           <div class="accordion-panel">
-            <p class="response-label">Tum kya bolo gi</p>
+            <p class="response-label" data-label-f="Tum kya bolo gi" data-label-m="Tum kya bolo ge">Tum kya bolo gi</p>
             <div class="script-card">
-              <blockquote data-script="Main aapko wrong information nahi dena chahti. Aap apni requirement mujhe bata dein, main ye hamari technical team ko share kar deti hoon aur woh aapko proper details explain kar denge.">Main aapko wrong information nahi dena chahti. Aap apni requirement mujhe bata dein, main ye hamari technical team ko share kar deti hoon aur woh aapko proper details explain kar denge.</blockquote>
+              <blockquote data-script="Main aapko wrong information nahi [G:dena chahti|dena chahta]. Aap apni requirement mujhe bata dein, main ye hamari technical team ko share [G:kar deti hoon|kar deta hoon] aur woh aapko proper details explain kar denge.">Main aapko wrong information nahi [G:dena chahti|dena chahta]. Aap apni requirement mujhe bata dein, main ye hamari technical team ko share [G:kar deti hoon|kar deta hoon] aur woh aapko proper details explain kar denge.</blockquote>
               <div class="script-actions"><button type="button" class="btn btn-copy">Copy Script</button><span class="copy-feedback">Copied!</span></div>
             </div>
           </div>
@@ -308,7 +329,7 @@
       <h3>Template — ChatGPT / Claude Mein Paste Karo</h3>
       <div class="script-card prompt-card">
         <p class="hint">Copy Template → [ ] fill karo → ChatGPT ya Claude mein paste karo</p>
-        <pre class="prompt-template" data-script="Main ek Pakistani business telecaller hoon. Main local/small businesses ko cold call ya WhatsApp kar rahi hoon — websites, social media aur digital solutions ke liye.
+        <pre class="prompt-template" data-script="Main ek Pakistani business telecaller hoon. Main local/small businesses ko cold call ya WhatsApp [G:kar rahi hoon|kar raha hoon] — websites, social media aur digital solutions ke liye.
 
 Mera naam: [APNA NAAM]
 Business type: [e.g. restaurant, salon, boutique]
@@ -322,7 +343,7 @@ Ab tak conversation mein kya hua:
 [SHORT SUMMARY — 2-3 lines]
 
 Mujhe kya chahiye:
-Mujhe batao ke main customer ko ab exactly kya bolun. Response natural Pakistani Roman Urdu + simple English mein ho — jaise real call par bolte hain. Short rakho, robotic paragraph mat banao. Apni taraf se price, timeline ya technical details invent mat karo. Agar price ya technical baat aaye to team se confirm karne wala safe response suggest karo. Sirf woh lines do jo main customer ko abhi bol sakti hoon.">Main ek Pakistani business telecaller hoon. Main local/small businesses ko cold call ya WhatsApp kar rahi hoon — websites, social media aur digital solutions ke liye.
+Mujhe batao ke main customer ko ab exactly kya bolun. Response natural Pakistani Roman Urdu + simple English mein ho — jaise real call par bolte hain. Short rakho, robotic paragraph mat banao. Apni taraf se price, timeline ya technical details invent mat karo. Agar price ya technical baat aaye to team se confirm karne wala safe response suggest karo. Sirf woh lines do jo main customer ko abhi [G:bol sakti hoon|bol sakta hoon].">Main ek Pakistani business telecaller hoon. Main local/small businesses ko cold call ya WhatsApp [G:kar rahi hoon|kar raha hoon] — websites, social media aur digital solutions ke liye.
 
 Mera naam: [APNA NAAM]
 Business type: [e.g. restaurant, salon, boutique]
@@ -336,7 +357,7 @@ Ab tak conversation mein kya hua:
 [SHORT SUMMARY — 2-3 lines]
 
 Mujhe kya chahiye:
-Mujhe batao ke main customer ko ab exactly kya bolun. Response natural Pakistani Roman Urdu + simple English mein ho — jaise real call par bolte hain. Short rakho, robotic paragraph mat banao. Apni taraf se price, timeline ya technical details invent mat karo. Agar price ya technical baat aaye to team se confirm karne wala safe response suggest karo. Sirf woh lines do jo main customer ko abhi bol sakti hoon.</pre>
+Mujhe batao ke main customer ko ab exactly kya bolun. Response natural Pakistani Roman Urdu + simple English mein ho — jaise real call par bolte hain. Short rakho, robotic paragraph mat banao. Apni taraf se price, timeline ya technical details invent mat karo. Agar price ya technical baat aaye to team se confirm karne wala safe response suggest karo. Sirf woh lines do jo main customer ko abhi [G:bol sakti hoon|bol sakta hoon].</pre>
         <div class="script-actions"><button type="button" class="btn btn-copy">Copy Template</button><span class="copy-feedback">Copied!</span></div>
       </div>
 
@@ -366,7 +387,7 @@ Mujhe kya chahiye:
       <h3>First Message</h3>
       <div class="script-card">
         <blockquote>
-          <p data-script="Assalam o Alaikum, main [NAME] hoon. Hum businesses ko website aur online presence improve karne mein help karte hain. Aapke business ke hawale se aapse contact kiya tha. Agar aap interested hon to main aapko short details share kar sakti hoon.">Assalam o Alaikum, main [NAME] hoon. Hum businesses ko website aur online presence improve karne mein help karte hain. Aapke business ke hawale se aapse contact kiya tha. Agar aap interested hon to main aapko short details share kar sakti hoon.</p>
+          <p data-script="Assalam o Alaikum, main [NAME] hoon. Hum businesses ko website aur online presence improve karne mein help karte hain. Aapke business ke hawale se aapse contact kiya tha. Agar aap interested hon to main aapko short details share [G:kar sakti hoon|kar sakta hoon].">Assalam o Alaikum, main [NAME] hoon. Hum businesses ko website aur online presence improve karne mein help karte hain. Aapke business ke hawale se aapse contact kiya tha. Agar aap interested hon to main aapko short details share [G:kar sakti hoon|kar sakta hoon].</p>
         </blockquote>
         <div class="script-actions"><button type="button" class="btn btn-copy">Copy Script</button><span class="copy-feedback">Copied!</span></div>
       </div>
@@ -374,7 +395,7 @@ Mujhe kya chahiye:
       <h3>Follow-Up</h3>
       <div class="script-card">
         <blockquote>
-          <p data-script="Assalam o Alaikum, just following up on my previous message. Agar aap website ya online presence improve karne mein interested hain to main aapko short details share kar sakti hoon.">Assalam o Alaikum, just following up on my previous message. Agar aap website ya online presence improve karne mein interested hain to main aapko short details share kar sakti hoon.</p>
+          <p data-script="Assalam o Alaikum, just following up on my previous message. Agar aap website ya online presence improve karne mein interested hain to main aapko short details share [G:kar sakti hoon|kar sakta hoon].">Assalam o Alaikum, just following up on my previous message. Agar aap website ya online presence improve karne mein interested hain to main aapko short details share [G:kar sakti hoon|kar sakta hoon].</p>
         </blockquote>
         <div class="script-actions"><button type="button" class="btn btn-copy">Copy Script</button><span class="copy-feedback">Copied!</span></div>
       </div>
