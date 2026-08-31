@@ -19,15 +19,21 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--nav-h) + 12px);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  font-family: "Segoe UI", system-ui, sans-serif;
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 16px;
   line-height: 1.6;
   color: var(--text);
   background: var(--bg);
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 /* Nav */
@@ -36,6 +42,7 @@ body {
   top: 0;
   z-index: 100;
   background: var(--primary);
+  padding-top: env(safe-area-inset-top);
 }
 
 .sticky-nav-inner {
@@ -43,24 +50,32 @@ body {
   margin: 0 auto;
   padding: 0 12px;
   display: flex;
-  gap: 2px;
+  gap: 4px;
   overflow-x: auto;
+  overflow-y: hidden;
   scrollbar-width: none;
   min-height: var(--nav-h);
   align-items: center;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
 }
 
 .sticky-nav-inner::-webkit-scrollbar { display: none; }
 
 .nav-link {
   flex-shrink: 0;
-  padding: 8px 12px;
+  padding: 10px 14px;
   color: rgba(255,255,255,0.85);
   text-decoration: none;
   font-size: 13px;
   font-weight: 500;
   border-radius: 6px;
   white-space: nowrap;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  scroll-snap-align: start;
+  touch-action: manipulation;
 }
 
 .nav-link:hover, .nav-link.active {
@@ -83,8 +98,9 @@ body {
 
 .page-header h1 {
   margin: 0 0 4px;
-  font-size: 1.75rem;
+  font-size: clamp(1.4rem, 5vw, 1.75rem);
   color: var(--primary);
+  line-height: 1.25;
 }
 
 .subtitle {
@@ -117,16 +133,19 @@ body {
   align-items: center;
   gap: 8px;
   flex: 1;
-  min-width: 200px;
+  min-width: 0;
+  width: 100%;
 }
 
 .name-input {
   flex: 1;
-  max-width: 200px;
-  padding: 7px 10px;
+  min-width: 0;
+  max-width: none;
+  padding: 10px 12px;
   border: 1px solid var(--border);
   border-radius: 6px;
-  font-size: 0.95rem;
+  font-size: 16px;
+  min-height: 44px;
 }
 
 .name-input:focus {
@@ -140,10 +159,12 @@ body {
 .btn {
   border: none;
   border-radius: 6px;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  padding: 7px 14px;
+  padding: 10px 16px;
+  min-height: 44px;
+  touch-action: manipulation;
 }
 
 .btn-sm { padding: 6px 12px; }
@@ -157,14 +178,14 @@ body {
   border: 1px solid var(--border);
 }
 
-.btn-copy {
-  background: var(--primary);
-  color: #fff;
-  padding: 7px 14px;
+.copy-feedback {
   font-size: 0.82rem;
+  color: #0d9488;
+  opacity: 0;
+  transition: opacity 0.2s;
 }
 
-.btn-copy.copied { background: #0d9488; }
+.copy-feedback.visible { opacity: 1; }
 
 /* Home */
 .home-section {
@@ -187,16 +208,19 @@ body {
 }
 
 .home-btn {
-  padding: 14px 16px;
+  padding: 16px;
   background: var(--blue-light);
   border: 1px solid #dbe8fe;
   border-radius: var(--radius);
   color: var(--primary);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   text-align: left;
   transition: border-color 0.15s, background 0.15s;
+  min-height: 52px;
+  width: 100%;
+  touch-action: manipulation;
 }
 
 .home-btn:hover {
@@ -211,14 +235,18 @@ body {
 }
 
 .home-link {
-  padding: 8px 14px;
+  padding: 12px 14px;
   background: #fff;
   border: 1px solid var(--border);
   border-radius: 6px;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: var(--blue);
   cursor: pointer;
   font-weight: 500;
+  min-height: 44px;
+  touch-action: manipulation;
+  text-align: left;
+  line-height: 1.35;
 }
 
 .home-link:hover { background: var(--surface); }
@@ -265,6 +293,8 @@ body {
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--primary);
+  line-height: 1.65;
+  word-break: break-word;
 }
 
 /* Pitch */
@@ -276,15 +306,19 @@ body {
 }
 
 .pitch-btn {
-  padding: 12px 14px;
+  padding: 14px 16px;
   background: #fff;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 600;
   text-align: left;
   cursor: pointer;
   color: var(--primary);
+  min-height: 48px;
+  width: 100%;
+  touch-action: manipulation;
+  line-height: 1.4;
 }
 
 .pitch-btn:hover, .pitch-btn.active {
@@ -339,14 +373,15 @@ body {
 }
 
 .script-large blockquote {
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 4.2vw, 1.1rem);
   line-height: 1.75;
 }
 
 .script-card blockquote {
   margin: 0 0 12px;
-  font-size: 1.02rem;
+  font-size: clamp(0.98rem, 3.8vw, 1.02rem);
   line-height: 1.7;
+  word-break: break-word;
 }
 
 .script-card blockquote p { margin: 0 0 8px; }
@@ -372,16 +407,19 @@ body {
   align-items: center;
   gap: 10px;
   margin-top: 10px;
+  flex-wrap: wrap;
 }
 
-.copy-feedback {
-  font-size: 0.82rem;
-  color: #0d9488;
-  opacity: 0;
-  transition: opacity 0.2s;
+.btn-copy {
+  background: var(--primary);
+  color: #fff;
+  padding: 10px 18px;
+  font-size: 0.88rem;
+  min-height: 44px;
+  flex: 1 1 auto;
 }
 
-.copy-feedback.visible { opacity: 1; }
+.btn-copy.copied { background: #0d9488; }
 
 /* Accordion */
 .accordion { display: flex; flex-direction: column; gap: 6px; }
@@ -398,7 +436,7 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  padding: 12px 14px;
+  padding: 14px 16px;
   background: #fff;
   border: none;
   cursor: pointer;
@@ -406,6 +444,8 @@ body {
   font-weight: 600;
   color: var(--primary);
   text-align: left;
+  min-height: 48px;
+  touch-action: manipulation;
 }
 
 .accordion-trigger:hover { background: var(--surface); }
@@ -528,17 +568,181 @@ body {
 
 .page-footer {
   text-align: center;
-  padding: 20px 0;
+  padding: 20px 0 calc(20px + env(safe-area-inset-bottom));
   color: var(--muted);
   font-size: 0.82rem;
   border-top: 1px solid var(--border);
 }
 
+/* Tablet */
+@media (max-width: 768px) {
+  .container {
+    padding: 18px 14px 44px;
+  }
+
+  .home-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .home-link {
+    width: 100%;
+  }
+
+  .after-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section > h2 {
+    font-size: 1.15rem;
+  }
+}
+
 /* Mobile */
 @media (max-width: 520px) {
-  .container { padding: 16px 12px 40px; }
-  .home-grid, .pitch-buttons { grid-template-columns: 1fr; }
-  .name-input { max-width: none; }
-  .script-large blockquote { font-size: 1.02rem; }
-  .nav-link { padding: 8px 10px; font-size: 12px; }
+  :root {
+    --nav-h: 52px;
+  }
+
+  .container {
+    padding: 14px 12px calc(36px + env(safe-area-inset-bottom));
+  }
+
+  .page-header {
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .name-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .name-label {
+    width: 100%;
+  }
+
+  .name-row {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .name-row .btn {
+    width: 100%;
+  }
+
+  .name-saved {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .home-grid,
+  .pitch-buttons {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .home-links {
+    grid-template-columns: 1fr;
+  }
+
+  .home-section {
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+  }
+
+  .section {
+    margin-bottom: 28px;
+  }
+
+  .section > h2 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+
+  .section h3 {
+    font-size: 1rem;
+  }
+
+  .script-card {
+    padding: 14px;
+  }
+
+  .script-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-copy {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-link {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .sticky-nav-inner {
+    padding: 0 8px;
+  }
+
+  .flow-line {
+    font-size: 0.85rem;
+    padding: 10px 12px;
+  }
+
+  .pitch-display,
+  .rules-box,
+  .after-item {
+    padding: 12px;
+  }
+
+  .prompt-card .prompt-template,
+  .prompt-example {
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+
+  .accordion-trigger span:first-child {
+    flex: 1;
+    padding-right: 4px;
+    line-height: 1.4;
+  }
+
+  .accordion-panel {
+    padding: 0 10px 12px;
+  }
+
+  .status-list dd {
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 360px) {
+  .page-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .nav-link {
+    padding: 10px;
+    font-size: 11px;
+  }
+
+  .home-btn,
+  .pitch-btn {
+    font-size: 0.88rem;
+    padding: 14px 12px;
+  }
 }
